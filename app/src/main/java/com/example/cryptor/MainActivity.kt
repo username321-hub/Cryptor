@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         resultTextView = findViewById(R.id.result)
         var caesarEncryptor = CaesarEncryptor()
         encryptButton.setOnClickListener {
-            resultTextView.setText(caesarEncryptor.encrypt(sourceEditText.text.toString()))
+            resultTextView.setText(caesarEncryptor.encrypt(findViewById<EditText>(R.id.source).text.toString()))
+            Toast.makeText(applicationContext, findViewById<EditText>(R.id.source).text, LENGTH_SHORT).show()
         }
     }
 }
